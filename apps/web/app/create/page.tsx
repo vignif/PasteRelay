@@ -48,7 +48,7 @@ export default function CreatePage() {
     <main style={{ display: 'grid', gap: 16 }}>
       <h2>Create session</h2>
       <p>Share this PIN with the other device to join:</p>
-      <div style={{ fontSize: 40, letterSpacing: 4, fontWeight: 800 }}>{pin || '••••••'}</div>
+  <div data-testid="pin" style={{ fontSize: 40, letterSpacing: 4, fontWeight: 800 }}>{pin || '••••••'}</div>
   <p style={{ opacity: 0.8 }}>Waiting for someone to join… Share the PIN and keep this page open.</p>
       {error && <p style={{ color: '#ffb3b3' }}>{error}</p>}
       <Link href="/" style={{ color: '#a9b4d0' }}>Back</Link>

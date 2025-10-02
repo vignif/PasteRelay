@@ -1,4 +1,5 @@
 import { WebSocketServer, WebSocket } from 'ws';
+import { createServer } from 'http';
 import type { RawData } from 'ws';
 import { ulid } from 'ulid';
 import {
@@ -79,8 +80,30 @@ function send(ws: WebSocket, obj: any) {
   if (ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify(obj));
 }
 
-const wss = new WebSocketServer({ port: PORT });
-console.log(`[signaling] listening on ws://localhost:${PORT}`);
+// Create an HTTP server to expose a simple health endpoint and attach WebSocket upgrades
+const server = createServer((req, res) => {
+  try {
+    const method = req.method || 'GET';
+    const url = new URL(req.url || '/', `http://${req.headers.host || 'localhost'}`);
+    if (method === 'GET' && url.pathname === '/ping') {
+      res.writeHead(200, { 'content-type': 'text/plain' });
+      res.end('ok');
+      return;
+    }
+    // Optionally return 404 for other HTTP requests
+    res.statusCode = 404;
+    res.end('not found');
+  } catch {
+    res.statusCode = 500;
+    res.end('error');
+  }
+});
+
+server.listen(PORT, () => {
+  console.log(`[signaling] listening on ws://localhost:${PORT}`);
+});
+
+const wss = new WebSocketServer({ server });
 
 wss.on('connection', (ws: WebSocket) => {
   let peerId = ulid();

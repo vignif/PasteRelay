@@ -10,13 +10,16 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "npm-run-all build:shared -p dev:signaling dev:web",
+  "dev": "npm-run-all build:shared -p dev:signaling dev:web",
     "dev:signaling": "npm --workspace apps/signaling run dev",
     "dev:web": "npm --workspace apps/web run dev",
     "build": "npm-run-all build:shared build:signaling build:web",
     "build:shared": "npm --workspace packages/shared run build",
     "build:signaling": "npm --workspace apps/signaling run build",
     "build:web": "npm --workspace apps/web run build",
+    "start:ci": "npm run build && npm-run-all -p start:signaling start:web",
+    "start:signaling": "npm --workspace apps/signaling run start",
+    "start:web": "npm --workspace apps/web run start",
     "lint": "npm-run-all lint:signaling lint:web",
     "lint:signaling": "npm --workspace apps/signaling run lint || true",
     "lint:web": "npm --workspace apps/web run lint || true",
