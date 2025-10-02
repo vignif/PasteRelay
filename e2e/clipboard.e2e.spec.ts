@@ -8,10 +8,12 @@ test('data channel opens and text flows between two peers', async ({ browser, pa
   await pageA.waitForURL('**/create', { timeout: 20000 });
   const pinContainer = pageA.getByTestId('pin');
   await expect(pinContainer).toBeVisible({ timeout: 20000 });
-  // Wait until the pin container's text is not the placeholder
-  await expect(pinContainer).not.toHaveText('••••••', { timeout: 20000 });
+  // Wait for a 6-digit PIN to appear
+  await expect(pinContainer).toHaveText(/\d{6}/, { timeout: 20000 });
   const pinText = await pinContainer.innerText();
-  const pin = pinText.replace(/\D/g, '').slice(0, 6);
+  const match = pinText.match(/\d{6}/);
+  expect(match).not.toBeNull();
+  const pin = match![0];
   expect(pin.length).toBeGreaterThan(0);
 
   // Page B (guest)
