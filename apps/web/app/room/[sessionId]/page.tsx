@@ -14,6 +14,7 @@ export default function RoomPage({ params }: { params: { sessionId: string } }) 
   const [error, setError] = useState('');
   const [history, setHistory] = useState<string[]>([]);
   const [text, setText] = useState('');
+  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const router = useRouter();
 
   const wsRef = useRef<WebSocket | null>(null);
@@ -122,8 +123,11 @@ export default function RoomPage({ params }: { params: { sessionId: string } }) 
     setText('');
   };
 
-  const copy = async (t: string) => {
+  const copy = async (t: string, i: number) => {
     try { await navigator.clipboard.writeText(t); } catch { /* ignore */ }
+    setCopiedIndex(i);
+    // Reset feedback after a short delay
+    setTimeout(() => setCopiedIndex((cur) => (cur === i ? null : cur)), 1200);
   };
 
   const leave = () => {
@@ -163,7 +167,12 @@ export default function RoomPage({ params }: { params: { sessionId: string } }) 
         {history.map((h, i) => (
           <div key={i} className="card">
             <div className="truncate">{h}</div>
-            <button onClick={() => copy(h)} className="btn-sm">Copy</button>
+            <button
+              onClick={() => copy(h, i)}
+              className={`btn-sm${copiedIndex === i ? ' copied' : ''}`}
+            >
+              {copiedIndex === i ? 'Copied' : 'Copy'}
+            </button>
           </div>
         ))}
       </div>

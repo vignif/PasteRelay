@@ -77,6 +77,8 @@ body {
   display: grid;
   gap: 16px;
 }
+/* Prevent children from overflowing the grid width */
+.main-grid > * { min-width: 0; }
 .title-xl {
   margin: 0;
   font-size: 28px;
@@ -161,7 +163,8 @@ body {
   padding: 10px;
   border-radius: 8px;
   gap: 8px;
-  max-width: 900px;
+  width: 100%;
+  max-width: 100%;
 }
 .prewrap { white-space: pre-wrap; }
 
@@ -172,4 +175,10 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* Visual feedback for copy button */
+.btn-sm.copied {
+  border-color: var(--primary);
+  color: var(--primary);
 }
