@@ -1,0 +1,25 @@
+# dependencies
+/node_modules
+**/node_modules
+
+# builds
+/dist
+**/dist
+.next
+
+# env
+*.env
+**/.env
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# macOS
+.DS_Store
+
+# editor
+.vscode
+.idea

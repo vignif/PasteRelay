@@ -1,0 +1,31 @@
+{
+  "name": "pasterelay-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "description": "PasteRelay – A temporary, PIN-based, P2P shared clipboard (text-only MVP)",
+  "author": "Francesco Vigni",
+  "license": "MIT",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm-run-all build:shared -p dev:signaling dev:web",
+    "dev:signaling": "npm --workspace apps/signaling run dev",
+    "dev:web": "npm --workspace apps/web run dev",
+    "build": "npm-run-all build:shared build:signaling build:web",
+    "build:shared": "npm --workspace packages/shared run build",
+    "build:signaling": "npm --workspace apps/signaling run build",
+    "build:web": "npm --workspace apps/web run build",
+    "lint": "npm-run-all lint:signaling lint:web",
+    "lint:signaling": "npm --workspace apps/signaling run lint || true",
+    "lint:web": "npm --workspace apps/web run lint || true",
+    "postinstall": "npm run build:shared",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "@playwright/test": "^1.48.0"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "@pasterelay/signaling",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "PasteRelay Signaling Server (WebSocket) for PIN rooms and WebRTC exchange",
+  "author": "Francesco Vigni",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "lint": "eslint . --ext .ts || true"
+  },
+  "dependencies": {
+    "ulid": "^2.3.0",
+    "ws": "^8.17.0",
+    "zod": "^3.23.8",
+    "@pasterelay/shared": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/ws": "^8.5.10",
+    "eslint": "^8.57.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.4.0"
+  }
+}

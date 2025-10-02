@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Build shared
+        run: npm --workspace packages/shared run build
+
+      - name: Run unit tests (shared)
+        run: |
+          npm --workspace packages/shared install --include=dev --legacy-peer-deps
+          npm --workspace packages/shared run test
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run e2e tests
+        env:
+          NEXT_PUBLIC_SIGNALING_URL: ws://localhost:8080
+        run: npx playwright test

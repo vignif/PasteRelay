@@ -1,0 +1,17 @@
+{
+  "root": true,
+  "env": {
+    "es2020": true,
+    "node": true,
+    "browser": true
+  },
+  "ignorePatterns": ["dist", "**/dist", "**/.next"],
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "parserOptions": {
+        "sourceType": "module"
+      }
+    }
+  ]
+}

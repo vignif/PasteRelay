@@ -1,0 +1,30 @@
+{
+  "name": "@pasterelay/web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "PasteRelay Web UI (Next.js) – Create/join PIN sessions and share text via WebRTC",
+  "author": "Francesco Vigni",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "lint": "next lint || true"
+  },
+  "dependencies": {
+    "next": "14.2.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "zustand": "^4.5.0",
+    "zod": "^3.23.8",
+    "@pasterelay/shared": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "typescript": "^5.4.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.4"
+  }
+}
