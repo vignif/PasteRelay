@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: any }) {
               <Link href="/about" className="link-muted">About</Link>
             </nav>
           </header>
-          <main>{children}</main>
+          <main className="content">{children}</main>
           <footer className="footer">
             <span>MIT © PasteRelay</span>
             <span>Author: Francesco Vigni</span>

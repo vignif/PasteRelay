@@ -46,13 +46,13 @@ export default function CreatePage() {
   }, [router]);
 
   return (
-    <main className="main-grid">
+    <div className="main-grid">
       <h2>Create session</h2>
       <p>Share this PIN with the other device to join:</p>
       <div data-testid="pin" className="pin">{pin || '••••••'}</div>
       <p className="text-muted">Waiting for someone to join… Share the PIN and keep this page open.</p>
       {error && <p className="error">{error}</p>}
       <Link href="/" className="link-muted">Back</Link>
-    </main>
+    </div>
   );
 }

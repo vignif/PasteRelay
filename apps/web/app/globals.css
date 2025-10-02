@@ -7,6 +7,9 @@
   --primary: #4c7cf3;
 }
 
+/* Use border-box so padding doesn't push elements beyond the viewport */
+*, *::before, *::after { box-sizing: border-box; }
+
 html, body {
   height: 100%;
 }
@@ -23,15 +26,19 @@ body {
   max-width: 900px;
   margin: 0 auto;
   padding: 24px;
-  min-height: 100dvh;
+  /* Ensure padding is included in total height */
+  box-sizing: border-box;
+  /* Fallback then dynamic viewport height */
+  height: 100vh;
+  height: 100dvh;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  row-gap: 16px;
 }
 .header {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 24px;
 }
 .brand {
   font-weight: 800;
@@ -60,6 +67,12 @@ body {
 }
 
 /* Sections & text */
+.container > main {
+  /* Allow the middle grid row to shrink and scroll so footer stays visible */
+  min-height: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
 .main-grid {
   display: grid;
   gap: 16px;
@@ -78,6 +91,10 @@ body {
 .error {
   color: #ffb3b3;
 }
+
+.section { display: grid; gap: 8px; }
+.h3 { margin: 12px 0 0 0; font-size: 18px; }
+.ul { margin: 0; padding-left: 18px; line-height: 1.6; }
 
 /* Controls */
 .row { display: flex; gap: 12px; align-items: center; }
@@ -116,6 +133,8 @@ body {
   padding: 6px 10px;
   border-radius: 6px;
   border: 1px solid var(--border-strong);
+  /* Keep action buttons from shrinking */
+  flex: 0 0 auto;
 }
 .input {
   padding: 10px;
@@ -141,5 +160,16 @@ body {
   border: 1px solid var(--border);
   padding: 10px;
   border-radius: 8px;
+  gap: 8px;
+  max-width: 900px;
 }
 .prewrap { white-space: pre-wrap; }
+
+/* Truncate long single-line text without growing the card width */
+.truncate {
+  flex: 1 1 auto;
+  min-width: 0; /* allow shrink in flex container */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

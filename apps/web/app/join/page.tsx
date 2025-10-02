@@ -36,7 +36,7 @@ export default function JoinPage() {
   };
 
   return (
-    <main className="main-grid">
+    <div className="main-grid">
       <h2>Join session</h2>
       <input
         placeholder="Enter PIN"
@@ -49,6 +49,6 @@ export default function JoinPage() {
         <Link href="/" className="link-muted">Back</Link>
       </div>
       {error && <p className="error">{error}</p>}
-    </main>
+    </div>
   );
 }

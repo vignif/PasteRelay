@@ -141,7 +141,7 @@ export default function RoomPage({ params }: { params: { sessionId: string } }) 
   };
 
   return (
-    <main className="main-grid">
+    <div className="main-grid">
       <h2>Shared clipboard</h2>
       <div className="row-8">
         <span className="status">Status: {status}</span>
@@ -162,11 +162,11 @@ export default function RoomPage({ params }: { params: { sessionId: string } }) 
       <div className="main-grid" style={{ gap: 8 }}>
         {history.map((h, i) => (
           <div key={i} className="card">
-            <div className="prewrap">{h}</div>
+            <div className="truncate">{h}</div>
             <button onClick={() => copy(h)} className="btn-sm">Copy</button>
           </div>
         ))}
       </div>
-    </main>
+    </div>
   );
 }
