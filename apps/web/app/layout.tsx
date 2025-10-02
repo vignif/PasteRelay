@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: any }) {
           <main className="content">{children}</main>
           <footer className="footer">
             <span>MIT © PasteRelay</span>
-            <span>Author: Francesco Vigni</span>
+            <span>Author: <a href="https://apps.francescovigni.com">Francesco Vigni</a></span>
           </footer>
         </div>
       </body>
