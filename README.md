@@ -30,7 +30,7 @@ License: MIT
 npm install
 ```
 
-2) Run dev (web on http://localhost:3000, signaling on ws://localhost:8080):
+2) Run dev (web on http://localhost:3000, signaling on ws://localhost:8004):
 
 ```bash
 npm run dev
@@ -51,7 +51,7 @@ docker compose up --build
 
 2) Open:
 - Web: http://localhost:3000
-- Signaling WS: ws://localhost:${SIGNALING_PORT:-8080}
+- Signaling WS: ws://localhost:${SIGNALING_PORT:-8004}
 
 To stop:
 
@@ -66,7 +66,7 @@ docker compose down
 - Run `docker compose up -d --build`.
 - Optionally place Nginx/Caddy in front:
   - Proxy http://localhost:3000 → your domain for the web app.
-  - Expose ws://yourdomain:8080 or proxy a path like `/ws` to the signaling container.
+  - Expose ws://yourdomain:8004 or proxy a path like `/ws` to the signaling container.
 
 ### Nginx example
 
@@ -83,7 +83,7 @@ server {
 
   # WebSocket proxy at /ws (update PUBLIC_WS_URL=wss://pasterelay.example.com/ws)
   location /ws {
-    proxy_pass http://127.0.0.1:8080;
+    proxy_pass http://127.0.0.1:8004;
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "Upgrade";
@@ -98,11 +98,11 @@ Don’t forget to enable TLS (e.g., with certbot) and set PUBLIC_WS_URL to wss:/
 Create a `.env` file at repo root (used by docker-compose and web):
 
 ```
-SIGNALING_PORT=8080
+SIGNALING_PORT=8004
 PIN_LENGTH=6
 SESSION_TTL_SECONDS=3600
 ICE_SERVERS=[{"urls":["stun:stun.l.google.com:19302"]}]
-PUBLIC_WS_URL=ws://localhost:8080
+PUBLIC_WS_URL=ws://localhost:8004
 # TURN (optional)
 # TURN_URL=turn:your.turn.server:3478
 # TURN_USERNAME=youruser

@@ -17,7 +17,7 @@ import {
 } from '@pasterelay/shared';
 import { PendingRelay } from '@pasterelay/shared';
 
-const PORT = parseInt(process.env.PORT || '8080', 10);
+const PORT = parseInt(process.env.PORT || '8004', 10);
 const PIN_LENGTH = parseInt(process.env.PIN_LENGTH || '6', 10);
 const SESSION_TTL_SECONDS = parseInt(process.env.SESSION_TTL_SECONDS || '3600', 10);
 const ICE_SERVERS: IceServer[] = (() => {

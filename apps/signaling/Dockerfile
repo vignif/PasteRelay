@@ -23,5 +23,5 @@ COPY --from=builder /app/apps/signaling/dist ./apps/signaling/dist
 COPY --from=builder /app/apps/signaling/package.json ./apps/signaling/package.json
 COPY --from=builder /app/packages/shared ./packages/shared
 COPY --from=builder /app/package.json ./package.json
-EXPOSE 8080
+EXPOSE 8004
 CMD ["node", "apps/signaling/dist/index.js"]
