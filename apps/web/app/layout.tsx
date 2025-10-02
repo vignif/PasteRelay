@@ -8,7 +8,7 @@ export default function RootLayout({ children }: { children: any }) {
         <div className="container">
           <header className="header">
             <Link href="/" className="brand">PasteRelay</Link>
-            <div className="tagline">A temporary tunnel for your clipboard</div>
+            <div className="tagline">ctrl-c/ctrl-v remote. private.</div>
             <nav className="nav">
               <Link href="/about" className="link-muted">About</Link>
             </nav>
