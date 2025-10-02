@@ -14,7 +14,8 @@ export default function CreatePage() {
   const router = useRouter();
 
   useEffect(() => {
-    const ws = new WebSocket(process.env.NEXT_PUBLIC_SIGNALING_URL || 'ws://localhost:8080');
+    const url = process.env.NEXT_PUBLIC_SIGNALING_URL || process.env.PUBLIC_WS_URL || 'ws://localhost:8080';
+    const ws = new WebSocket(url);
     ws.onopen = () => {
       const req: CreateSessionRequest = { type: 'create_session' };
       ws.send(JSON.stringify(req));

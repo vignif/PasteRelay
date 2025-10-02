@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function AboutPage() {
   return (
     <main style={{ display: 'grid', gap: 16 }}>
@@ -27,7 +29,7 @@ export default function AboutPage() {
       </section>
 
       <div>
-        <a href="/" style={{ color: '#a9b4d0' }}>Back to Home</a>
+        <Link href="/" style={{ color: '#a9b4d0' }}>Back to Home</Link>
       </div>
     </main>
   );

@@ -13,6 +13,17 @@ WORKDIR /app
 COPY . .
 RUN npm i --ignore-scripts
 RUN npm --workspace packages/shared run build
+
+# Build-time configuration for Next.js (basePath and public env)
+ARG NEXT_BASE_PATH
+ARG NEXT_PUBLIC_SIGNALING_URL
+ARG PUBLIC_WS_URL
+ARG NEXT_PUBLIC_ICE_SERVERS
+ENV NEXT_BASE_PATH=$NEXT_BASE_PATH \
+	NEXT_PUBLIC_SIGNALING_URL=$NEXT_PUBLIC_SIGNALING_URL \
+	PUBLIC_WS_URL=$PUBLIC_WS_URL \
+	NEXT_PUBLIC_ICE_SERVERS=$NEXT_PUBLIC_ICE_SERVERS
+
 RUN npm --workspace apps/web run build
 
 FROM node:20-alpine AS runner
