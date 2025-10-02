@@ -141,29 +141,29 @@ export default function RoomPage({ params }: { params: { sessionId: string } }) 
   };
 
   return (
-    <main style={{ display: 'grid', gap: 16 }}>
+    <main className="main-grid">
       <h2>Shared clipboard</h2>
-      <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-        <span style={{ fontSize: 12, opacity: 0.8 }}>Status: {status}</span>
+      <div className="row-8">
+        <span className="status">Status: {status}</span>
       </div>
-      {error && <p style={{ color: '#ffb3b3' }}>{error}</p>}
+      {error && <p className="error">{error}</p>}
 
-      <div style={{ display: 'flex', gap: 8 }}>
+      <div className="row-8">
         <input
           placeholder="Type text to share"
           value={text}
           onChange={(e) => setText((e.target as HTMLInputElement).value)}
-          style={{ padding: 10, borderRadius: 8, border: '1px solid #39435f', background: 'transparent', color: 'white', flex: 1 }}
+          className="input flex-1"
         />
-        <button onClick={push} style={{ background: '#4c7cf3', color: 'white', padding: '10px 14px', borderRadius: 8, border: 'none' }}>Share</button>
-        <button onClick={leave} style={{ background: 'transparent', color: 'white', padding: '10px 14px', borderRadius: 8, border: '1px solid #39435f' }}>Leave</button>
+        <button onClick={push} className="btn">Share</button>
+        <button onClick={leave} className="btn-outline">Leave</button>
       </div>
 
-      <div style={{ display: 'grid', gap: 8 }}>
+      <div className="main-grid" style={{ gap: 8 }}>
         {history.map((h, i) => (
-          <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', border: '1px solid #2a3147', padding: 10, borderRadius: 8 }}>
-            <div style={{ whiteSpace: 'pre-wrap' }}>{h}</div>
-            <button onClick={() => copy(h)} style={{ background: 'transparent', border: '1px solid #39435f', color: 'white', padding: '6px 10px', borderRadius: 6 }}>Copy</button>
+          <div key={i} className="card">
+            <div className="prewrap">{h}</div>
+            <button onClick={() => copy(h)} className="btn-sm">Copy</button>
           </div>
         ))}
       </div>

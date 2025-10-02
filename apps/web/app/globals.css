@@ -1,0 +1,145 @@
+:root {
+  --bg: #0b1020;
+  --fg: #e9ecf1;
+  --muted: #a9b4d0;
+  --border: #2a3147;
+  --border-strong: #39435f;
+  --primary: #4c7cf3;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* Layout */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.brand {
+  font-weight: 800;
+  font-size: 20px;
+  color: inherit;
+  text-decoration: none;
+}
+.tagline {
+  opacity: 0.7;
+  font-size: 13px;
+  flex: 1;
+}
+.nav {
+  display: flex;
+  gap: 12px;
+}
+.footer {
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  opacity: 0.8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Sections & text */
+.main-grid {
+  display: grid;
+  gap: 16px;
+}
+.title-xl {
+  margin: 0;
+  font-size: 28px;
+}
+.text-muted {
+  opacity: 0.8;
+}
+.link-muted {
+  color: var(--muted);
+  text-decoration: none;
+}
+.error {
+  color: #ffb3b3;
+}
+
+/* Controls */
+.row { display: flex; gap: 12px; align-items: center; }
+.row-8 { display: flex; gap: 8px; align-items: center; }
+.btn {
+  background: var(--primary);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-ghost {
+  background: transparent;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid var(--border-strong);
+}
+.btn-outline {
+  background: transparent;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border-strong);
+}
+.btn-sm {
+  background: transparent;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border-strong);
+}
+.input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  color: white;
+}
+.w-200 { width: 200px; }
+.flex-1 { flex: 1; }
+
+/* Components */
+.pin {
+  font-size: 40px;
+  letter-spacing: 4px;
+  font-weight: 800;
+}
+.status { font-size: 12px; opacity: 0.8; }
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--border);
+  padding: 10px;
+  border-radius: 8px;
+}
+.prewrap { white-space: pre-wrap; }

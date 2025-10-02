@@ -36,24 +36,19 @@ export default function JoinPage() {
   };
 
   return (
-    <main style={{ display: 'grid', gap: 16 }}>
+    <main className="main-grid">
       <h2>Join session</h2>
       <input
         placeholder="Enter PIN"
         value={pin}
         onChange={(e) => setPin(e.target.value.replace(/\D/g, '').slice(0, 6))}
-        style={{ padding: 10, borderRadius: 8, border: '1px solid #39435f', background: 'transparent', color: 'white', width: 200 }}
+        className="input w-200"
       />
-      <div style={{ display: 'flex', gap: 12 }}>
-        <button onClick={submit} style={btnStyle}>Join</button>
-        <Link href="/" style={{ color: '#a9b4d0' }}>Back</Link>
+      <div className="row">
+        <button onClick={submit} className="btn">Join</button>
+        <Link href="/" className="link-muted">Back</Link>
       </div>
-      {error && <p style={{ color: '#ffb3b3' }}>{error}</p>}
+      {error && <p className="error">{error}</p>}
     </main>
   );
 }
-
-const btnStyle: React.CSSProperties = {
-  background: '#4c7cf3', color: 'white', padding: '10px 14px', borderRadius: 8,
-  textDecoration: 'none', fontWeight: 600, border: 'none'
-};

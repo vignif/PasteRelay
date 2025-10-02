@@ -46,13 +46,13 @@ export default function CreatePage() {
   }, [router]);
 
   return (
-    <main style={{ display: 'grid', gap: 16 }}>
+    <main className="main-grid">
       <h2>Create session</h2>
       <p>Share this PIN with the other device to join:</p>
-  <div data-testid="pin" style={{ fontSize: 40, letterSpacing: 4, fontWeight: 800 }}>{pin || '••••••'}</div>
-  <p style={{ opacity: 0.8 }}>Waiting for someone to join… Share the PIN and keep this page open.</p>
-      {error && <p style={{ color: '#ffb3b3' }}>{error}</p>}
-      <Link href="/" style={{ color: '#a9b4d0' }}>Back</Link>
+      <div data-testid="pin" className="pin">{pin || '••••••'}</div>
+      <p className="text-muted">Waiting for someone to join… Share the PIN and keep this page open.</p>
+      {error && <p className="error">{error}</p>}
+      <Link href="/" className="link-muted">Back</Link>
     </main>
   );
 }

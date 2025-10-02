@@ -5,7 +5,7 @@
   - generic [ref=e2]:
     - banner [ref=e3]:
       - generic [ref=e4]: PasteRelay
-      - generic [ref=e5]: A temporary tunnel for your clipboard
+      - generic [ref=e5]: Remotely ctrl-c / ctrl-v 
     - main [ref=e6]:
       - heading "Create session" [level=2] [ref=e7]
       - paragraph [ref=e8]: "Share this PIN with the other device to join:"
